@@ -1,0 +1,99 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-generate-a-new-cartoon-kitty-illustration-with-a-love-heart-symbol-based-on-the-uploaded-reference-image-img-2195-2-jpeg-and-use-it-as-the-primary-kitty-illustration-on-the-proposal-home-screen-replace-the-currently-referenced-assets-generated-proposal-kitty-jpeg-usage-in-the-ui",
+      "featureTitle": "Generate a new cartoon kitty illustration (with a love/heart symbol) based on the uploaded reference image (IMG_2195-2.jpeg), and use it as the primary kitty illustration on the proposal/home screen (replace the currently referenced /assets/generated/proposal-kitty.jpeg usage in the UI).",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-all-ui-referenced-generated-static-assets-used-by-the-proposal-home-screen-exist-under-frontend-public-assets-generated-and-that-the-app-does-not-reference-missing-filenames-including-the-primary-kitty-asset-and-any-background-pattern-assets",
+      "featureTitle": "Ensure all UI-referenced generated static assets used by the proposal/home screen exist under frontend/public/assets/generated and that the app does not reference missing filenames (including the primary kitty asset and any background/pattern assets).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/FloatingHearts.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-fix-the-no-button-behavior-so-it-persists-at-all-times-on-all-devices-especially-mobile-it-must-never-disappear-vanish-due-to-positioning-container-bounds-or-input-mode-differences-mouse-vs-touch-maintain-the-evasive-behavior-while-ensuring-the-button-remains-visible-and-interactable",
+      "featureTitle": "Fix the “No” button behavior so it persists at all times on all devices (especially mobile): it must never disappear/vanish due to positioning, container bounds, or input-mode differences (mouse vs touch). Maintain the evasive behavior while ensuring the button remains visible and interactable.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-teasing-message-popups-so-that-each-click-on-no-spawns-a-random-teasing-message-at-a-random-position-on-the-screen-and-the-message-visibly-hovers-moves-around-after-appearing-each-no-click-must-create-a-new-popup-random-message-and-random-starting-position-while-keeping-the-no-button-present",
+      "featureTitle": "Update the teasing message popups so that each click on “No” spawns a random teasing message at a random position on the screen, and the message visibly “hovers/moves around” after appearing. Each “No” click must create a new popup (random message and random starting position) while keeping the “No” button present.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-improve-the-proposal-home-screen-background-to-be-more-classy-and-aesthetic-while-staying-valentine-themed-update-styling-so-the-background-feels-intentional-and-premium-e-g-refined-gradients-subtle-texture-pattern-and-consistent-contrast-with-the-card-content",
+      "featureTitle": "Improve the proposal/home screen background to be more classy and aesthetic while staying Valentine-themed; update styling so the background feels intentional and premium (e.g., refined gradients, subtle texture/pattern, and consistent contrast with the card/content).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/FloatingHearts.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

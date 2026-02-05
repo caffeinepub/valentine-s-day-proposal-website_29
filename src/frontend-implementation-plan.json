@@ -1,0 +1,109 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix proposal screen assets, persistent evasive No button, floating teasing popups, and premium Valentine background",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "summary": "Add the newly generated cartoon kitty illustration (with heart) and replace the proposal screen’s primary kitty image reference to use it.",
+      "acceptanceCriteria": [
+        "The proposal/home screen displays the newly generated cartoon kitty illustration (not a broken image and not the prior placeholder).",
+        "The illustration is visually consistent with the uploaded reference (cartoon style) and includes a clear love/heart element."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/proposal-kitty-cartoon.dim_768x768.png",
+          "operation": "create",
+          "description": "Add the generated cartoon kitty illustration asset (based on IMG_2195-2.jpeg) with a visible heart/love element for use on the proposal/home screen."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Replace the proposal/home screen primary kitty <img> source from the missing generated reference to the new static asset at frontend/public/assets/generated/proposal-kitty-cartoon.dim_768x768.png. Keep existing success flow semantics intact. Continue using the existing shadcn-ui Button component for actions; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Ensure all generated static assets referenced by the proposal/home screen exist and no missing /assets/generated/* filenames are referenced on initial load.",
+      "acceptanceCriteria": [
+        "No broken image requests occur for /assets/generated/* on initial load of the proposal screen.",
+        "The primary kitty image loads successfully in both desktop and mobile viewports."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Audit and update all proposal/home screen asset references so they point to existing files under frontend/public/assets/generated (including replacing any legacy or non-existent filenames). Continue using the existing shadcn-ui Button component; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/FloatingHearts.tsx",
+          "operation": "modify",
+          "description": "Confirm the background/pattern asset reference points to an existing file under frontend/public/assets/generated and adjust only if needed to eliminate any missing /assets/generated/* requests."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Make the evasive “No” button persist and remain visible/interactable on all devices (including mobile), with a touch-friendly evasive equivalent.",
+      "acceptanceCriteria": [
+        "On mobile, the “No” button remains visible and clickable without requiring any prior click.",
+        "After every “No” click, the “No” button remains on-screen and repositions/evades without jumping off-screen or to an invalid location.",
+        "Evasive behavior works on desktop (mouse proximity) and has a sensible equivalent on touch devices (does not rely exclusively on window mousemove)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Refactor “No” button positioning so it is always rendered on-screen and never vanishes due to container bounds: compute and clamp its position against the viewport (or a stable bounding area) and initialize a valid position on first render. Preserve evasive behavior on desktop (pointer proximity) and add a touch-friendly equivalent (e.g., pointer/touch proximity or immediate reposition on tap/press) that does not rely solely on window mousemove. Ensure the button remains visible and clickable after every reposition. Continue using the existing shadcn-ui Button component; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Spawn a new random teasing popup on every “No” click at a random screen position, with a visible drifting/hovering motion and timed dismissal, without blocking interaction.",
+      "acceptanceCriteria": [
+        "Each “No” click shows a teasing popup message at a random screen location (not anchored to the button).",
+        "The popup animates/moves after appearing (hovering/drifting effect) and then disappears after a short time.",
+        "Multiple “No” clicks in succession create multiple popups without breaking layout or blocking button interaction."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update “No” click handling to create a new teasing popup for every click with (1) random message selection and (2) random initial on-screen position (clamped to viewport). Ensure multiple popups can coexist, are pointer-events-none, and do not interfere with the “No” button persistence. Continue using the existing shadcn-ui Button component; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add/adjust CSS animations for teasing popups to include a drifting/hovering motion after appearing (e.g., subtle translation path) while retaining a short lifetime and clean fade-out. Keep user-facing text in English."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Upgrade the proposal/home screen to a more premium, Valentine-themed background with refined gradients and subtle texture/pattern while preserving readability.",
+      "acceptanceCriteria": [
+        "The background looks visually upgraded (more refined than a basic gradient) and does not reduce readability of the main prompt and buttons.",
+        "The updated background works in common mobile viewport sizes without banding/contrast issues."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update the proposal/home screen layout styling to use a more premium Valentine background treatment (refined multi-stop gradients, better contrast, and intentional layering behind the content card area) while keeping the existing success (Yayyyy + fireworks) semantics unchanged. Continue using the existing shadcn-ui Button component; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/FloatingHearts.tsx",
+          "operation": "modify",
+          "description": "Tune the subtle texture/pattern layer (using the existing generated pattern asset) so it feels more intentional and premium (opacity, sizing, positioning), without hurting text/button readability on mobile."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add/adjust global utility classes and/or keyframes as needed to support the upgraded background look (e.g., subtle grain/soft-light overlay effect using CSS) while maintaining legibility and avoiding harsh banding on mobile."
+        }
+      ]
+    }
+  ]
+}

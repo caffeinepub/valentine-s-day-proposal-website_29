@@ -1,0 +1,17 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no backend logic.",
+  "feature_evidence.json": "JSON report mapping features to related source files and components for build tracking.",
+  "frontend-file-summaries.txt": "Text file providing short descriptions of key frontend components and hooks.",
+  "frontend/index.css": "Tailwind base stylesheet defining theme variables and light/dark color tokens.",
+  "frontend/index.html": "Base HTML entry point loading the React app root and main script.",
+  "frontend/src/App.tsx": "Main React component handling proposal UI, evasive No button, teasing popups, success fireworks, and layout refs.",
+  "frontend/src/components/Fireworks.tsx": "Generates looping animated particle fireworks using timed particle bursts.",
+  "frontend/src/components/FloatingHearts.tsx": "Creates drifting floating-heart particles with a soft patterned overlay.",
+  "frontend/src/hooks/useActor.ts": "Hook that creates and manages an authenticated or anonymous backend actor using React Query.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Internet Identity provider and hook managing login state, stored identities, and AuthClient.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file exporting no backend query logic.",
+  "frontend/src/index.css": "Defines Tailwind layers, OKLCH color tokens, Valentine-themed light/dark palettes, base styles, and custom utilities plus animations for hearts and premium background effects.",
+  "frontend/src/main.tsx": "Bootstraps the React app, wrapping App with React Query and Internet Identity providers and importing global styles.",
+  "frontend/tailwind.config.js": "Configures Tailwind with plugins, OKLCH-based color tokens, Valentine palette extensions, custom radii, shadows, and animation keyframes.",
+  "project_state.json": "Captures the project’s feature state and requirements for the Valentine proposal app, detailing existing UI behaviors and planned enhancements like refined No interactions and improved visuals."
+}

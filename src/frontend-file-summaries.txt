@@ -1,0 +1,8 @@
+{
+  "frontend/src/App.tsx": "Main Valentine's proposal component with persistent evasive No button (works on both desktop and mobile), random floating teasing popups with drift animation, cartoon kitty illustration, premium gradient background, and fireworks success state.",
+  "frontend/src/components/FloatingHearts.tsx": "Component that renders animated floating heart particles across the screen with randomized positions, delays, and sizes, plus an enhanced subtle pattern overlay for premium aesthetic.",
+  "frontend/src/index.css": "Global styles with enhanced Valentine's Day themed OKLCH color palette, premium background utilities (radial overlay and texture grain), and custom animations including the new drifting teasing popup effect.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Valentine's Day color tokens and custom shadow utilities for the romantic glow effects.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file as no backend queries are needed for this frontend-only Valentine's proposal app.",
+  "frontend/src/components/Fireworks.tsx": "Fireworks celebration component that creates animated particle explosions in multiple colors across the screen for the success state."
+}

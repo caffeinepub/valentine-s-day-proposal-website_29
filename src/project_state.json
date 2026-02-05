@@ -1,0 +1,261 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "React + Tailwind SPA Valentine proposal site. User now requires a newly generated cartoon kitty illustration based on a provided reference (not inserting an external photo), a more classy/aesthetic background, and refined “No” interactions: the No button must persist (especially on mobile), evade on proximity, and each No click spawns a random teasing message that appears at random positions and can animate/move around; the No label should return after showing teasing text above/near the moving button. “Yes” still triggers a Yayyyy success screen with fireworks.",
+  "existing_features": [
+    {
+      "id": "IF-1",
+      "title": "Valentine proposal screen with primary kitty illustration",
+      "synonyms": [
+        "Proposal prompt UI",
+        "Main proposal page"
+      ],
+      "description": "Renders the main proposal prompt (“Victoria will you be my valentine ?”) with a centered layout, romantic gradient background, and a primary illustration loaded from a public static asset (/assets/generated/proposal-kitty.jpeg).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-2",
+      "title": "Proximity-based evasive “No” button",
+      "synonyms": [
+        "Evasive No button",
+        "Hover-near avoidance"
+      ],
+      "description": "Tracks mouse movement and, when the cursor comes within a proximity threshold of the No button, repositions the button to a new random location while constraining it within the main centered container bounds.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-3",
+      "title": "Cycling teasing label on the “No” button",
+      "synonyms": [
+        "No label cycling",
+        "Teasing phrases"
+      ],
+      "description": "Each No click increments a counter that cycles the No button label through multiple teasing phrases while keeping the main prompt text unchanged.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-4",
+      "title": "Ephemeral teasing popups on “No” clicks",
+      "synonyms": [
+        "No-click toast",
+        "Speech-bubble popup"
+      ],
+      "description": "On each No click, spawns a short-lived popup positioned near the No button using a fixed overlay element and a dedicated CSS animation; popups automatically expire and repeated clicks accumulate multiple independent popups.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-5",
+      "title": "“Yes” acceptance success screen with fireworks and “Yayyyy!”",
+      "synonyms": [
+        "Acceptance screen",
+        "Celebration state"
+      ],
+      "description": "Clicking Yes switches to a success state that displays a large “Yayyyy!” message, a success kitty image, and an animated fireworks celebration overlay.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-6",
+      "title": "Fireworks particle celebration component",
+      "synonyms": [
+        "Fireworks effect",
+        "Particle explosions"
+      ],
+      "description": "Generates repeated bursts of colored particles at preset screen-relative positions using an interval; particles animate outward via CSS variables (angle/velocity) and are removed after a timeout.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-7",
+      "title": "Floating hearts animated background with pattern overlay",
+      "synonyms": [
+        "Heart particles",
+        "Animated romantic background"
+      ],
+      "description": "Creates randomized heart particles on mount and animates them upward across the viewport; also renders a faint repeating/cover background pattern image from /assets/generated/....",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-8",
+      "title": "Valentine-themed styling system (Tailwind + OKLCH tokens + custom animations)",
+      "synonyms": [
+        "Theme tokens",
+        "Romantic Tailwind theme"
+      ],
+      "description": "Defines a Valentine color palette and dark-mode overrides via CSS variables, extends Tailwind with Valentine color aliases and glow shadow, and provides custom keyframe animations (float-up, heart-beat, teasing-popup, firework-particle, etc.).",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-9",
+      "title": "Static asset hygiene for generated UI images",
+      "synonyms": [
+        "Generated assets consistency",
+        "No broken image requests"
+      ],
+      "description": "UI components consistently reference generated images under /assets/generated/... intended to be served from frontend/public/assets/generated under stable filenames to avoid runtime 404s.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "IF-10",
+      "title": "Internet Identity authentication provider (DFINITY)",
+      "synonyms": [
+        "II auth context",
+        "AuthClient wrapper"
+      ],
+      "description": "Provides a React Context managing AuthClient initialization, loading persisted identity, login/logout actions, and derived status flags/errors for consumption by UI components.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-11",
+      "title": "Identity-aware canister actor hook (React Query)",
+      "synonyms": [
+        "useActor hook",
+        "ICP actor factory"
+      ],
+      "description": "Creates and caches an ICP backend actor keyed by the current principal; returns an anonymous actor when unauthenticated and invalidates/refetches other queries when the actor changes.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-12",
+      "title": "Backend canister scaffold (Motoko stub)",
+      "synonyms": [
+        "Motoko actor stub",
+        "Backend placeholder"
+      ],
+      "description": "Includes an empty Motoko actor (backend/main.mo) as a placeholder for future backend methods.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-13",
+      "title": "No-backend query placeholder hook module",
+      "synonyms": [
+        "useQueries placeholder"
+      ],
+      "description": "Contains an intentionally empty useQueries module indicating the Valentine UI currently does not require backend queries and is locally state-driven.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-a-new-cartoon-kitty-illustration-with-a-love-heart-symbol-based-on-the-uploaded-reference-image-img-2195-2-jpeg-and-use-it-as-the-primary-kitty-illustration-on-the-proposal-home-screen-replace-the-currently-referenced-assets-generated-proposal-kitty-jpeg-usage-in-the-ui",
+      "title": "Generate a new cartoon kitty illustration (with a love/heart symbol) based on the uploaded reference image (IMG_2195-2.jpeg), and use it as the primary kitty illustration on the proposal/home screen (replace the currently referenced /assets/generated/proposal-kitty.jpeg usage in the UI).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-all-ui-referenced-generated-static-assets-used-by-the-proposal-home-screen-exist-under-frontend-public-assets-generated-and-that-the-app-does-not-reference-missing-filenames-including-the-primary-kitty-asset-and-any-background-pattern-assets",
+      "title": "Ensure all UI-referenced generated static assets used by the proposal/home screen exist under frontend/public/assets/generated and that the app does not reference missing filenames (including the primary kitty asset and any background/pattern assets).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-no-button-behavior-so-it-persists-at-all-times-on-all-devices-especially-mobile-it-must-never-disappear-vanish-due-to-positioning-container-bounds-or-input-mode-differences-mouse-vs-touch-maintain-the-evasive-behavior-while-ensuring-the-button-remains-visible-and-interactable",
+      "title": "Fix the “No” button behavior so it persists at all times on all devices (especially mobile): it must never disappear/vanish due to positioning, container bounds, or input-mode differences (mouse vs touch). Maintain the evasive behavior while ensuring the button remains visible and interactable.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-teasing-message-popups-so-that-each-click-on-no-spawns-a-random-teasing-message-at-a-random-position-on-the-screen-and-the-message-visibly-hovers-moves-around-after-appearing-each-no-click-must-create-a-new-popup-random-message-and-random-starting-position-while-keeping-the-no-button-present",
+      "title": "Update the teasing message popups so that each click on “No” spawns a random teasing message at a random position on the screen, and the message visibly “hovers/moves around” after appearing. Each “No” click must create a new popup (random message and random starting position) while keeping the “No” button present.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-the-proposal-home-screen-background-to-be-more-classy-and-aesthetic-while-staying-valentine-themed-update-styling-so-the-background-feels-intentional-and-premium-e-g-refined-gradients-subtle-texture-pattern-and-consistent-contrast-with-the-card-content",
+      "title": "Improve the proposal/home screen background to be more classy and aesthetic while staying Valentine-themed; update styling so the background feels intentional and premium (e.g., refined gradients, subtle texture/pattern, and consistent contrast with the card/content).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Generate and insert a new cartoon kitty-with-love illustration based on the provided reference (do not use external/uploaded photo); ensure it renders on the home/proposal screen",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Update background to be more classy/aesthetic (improve overall visual styling of home/proposal screen)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Ensure the “No” button persists at all times across devices (fix mobile disappearing/vanishing); keep evasion behavior on proximity without removing the button",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "On each “No” click, show a random teasing message that spawns at a random screen position and can animate/move around; optionally show teasing text above/near the moving No button while keeping/returning the “No” label",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "architectural_notes": [
+    "React SPA using functional components and hooks; App.tsx holds the primary UI state machine (proposal vs success) and interaction state (no-click count, evasive button position, popup list).",
+    "Visual effects are encapsulated as components (FloatingHearts, Fireworks) and driven by CSS keyframes + small amounts of JS (randomized particles, timers/intervals).",
+    "TailwindCSS is used with OKLCH CSS-variable tokens (light/dark) and custom utility animations defined in global CSS; Tailwind config extends a Valentine palette and glow shadow.",
+    "Provider-based infrastructure is bootstrapped in main.tsx (QueryClientProvider + InternetIdentityProvider) even though the main page currently uses only local state.",
+    "Internet Identity authentication is implemented via a React Context wrapper around @dfinity/auth-client with identity persistence and status flags.",
+    "Canister access is abstracted behind a useActor hook that creates/caches an actor keyed by the current principal via @tanstack/react-query; actor changes invalidate/refetch other queries.",
+    "Static images are served from the frontend public path under /assets/generated/... and referenced directly from components."
+  ],
+  "known_issues": [
+    "backend/main.mo defines an empty actor (no methods), so the ICP actor/auth scaffolding cannot perform meaningful backend calls yet.",
+    "Two different global CSS files exist (frontend/index.css and frontend/src/index.css) with different token sets; this duplication can cause confusion about which styling is actually applied (main.tsx imports src/index.css).",
+    "The UI references multiple static assets under /assets/generated/... (e.g., floating-hearts-pattern.dim_1024x768.png, proposal-kitty.jpeg, kitty-love.dim_512x512.png); these files must exist in frontend/public for deployments to avoid broken image requests (assets not visible in provided file list).",
+    "The “No” button switches to absolute positioning after the first click; if noButtonPosition hasn’t been updated yet, it may momentarily jump to (0,0) within the container until a proximity move occurs.",
+    "DEFAULT_IDENTITY_PROVIDER comes from process.env.II_URL; if missing/misconfigured, Internet Identity login will fail at runtime.",
+    "useActor invalidates and refetches all non-actor queries when the actor changes; in a larger app this could cause unnecessary refetch storms.",
+    "useQueries.ts is an intentionally empty placeholder; importing query hooks from it would be a dead end unless implemented later.",
+    "Cartoon kitty illustration is not rendering on the home/proposal screen (broken/missing asset or incorrect reference).",
+    "On mobile, the “No” button can disappear/vanish without a click; it must persist across interactions."
+  ],
+  "isFixRequest": true,
+  "imageRequirements": "## Required Images\n- Cartoon kitty illustration based on the uploaded reference, with a love/heart symbol, clean background (proposal-kitty-cartoon.dim_768x768.png)",
+  "generatedImages": [
+    {
+      "filename": "proposal-kitty-cartoon.dim_768x768.png",
+      "description": "Cartoon kitty illustration based on the uploaded reference, with a love/heart symbol, clean background",
+      "targetWidth": 768,
+      "targetHeight": 768
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Valentine's Day Proposal Website",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

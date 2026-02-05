@@ -1,0 +1,119 @@
+{
+  "kind": "build_request",
+  "title": "Fix missing kitty illustration, persistent “No” button on mobile, and floating teasing messages + classy background",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "text": "Generate a new cartoon kitty illustration (with a love/heart symbol) based on the uploaded reference image (IMG_2195-2.jpeg), and use it as the primary kitty illustration on the proposal/home screen (replace the currently referenced /assets/generated/proposal-kitty.jpeg usage in the UI).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent-7"
+        ],
+        "quotes": [
+          "So regarding the Cartoon of Kitty, you make a Cartoon of Kitty based on the reference I gave. Don't insert any image. You make, you generate a Cartoon of Kitty like with the love symbol and put it over there."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The proposal/home screen displays the newly generated cartoon kitty illustration (not a broken image and not the prior placeholder).",
+        "The illustration is visually consistent with the uploaded reference (cartoon style) and includes a clear love/heart element."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Ensure all UI-referenced generated static assets used by the proposal/home screen exist under frontend/public/assets/generated and that the app does not reference missing filenames (including the primary kitty asset and any background/pattern assets).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent-3",
+          "msg-recent-7"
+        ],
+        "quotes": [
+          "Still, on the home screen, I don't see the carton of kitty. The photo is not there.",
+          "make sure you implement the app rightly"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No broken image requests occur for /assets/generated/* on initial load of the proposal screen.",
+        "The primary kitty image loads successfully in both desktop and mobile viewports."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Fix the “No” button behavior so it persists at all times on all devices (especially mobile): it must never disappear/vanish due to positioning, container bounds, or input-mode differences (mouse vs touch). Maintain the evasive behavior while ensuring the button remains visible and interactable.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent-3",
+          "msg-recent-5",
+          "msg-recent-7"
+        ],
+        "quotes": [
+          "and on the no button in the mobile version, it's disappearing if you don't click on it. It should persist, right?",
+          "the note button can't be gone. It should persist.",
+          "make sure you implement the app rightly, the no button regarding"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On mobile, the “No” button remains visible and clickable without requiring any prior click.",
+        "After every “No” click, the “No” button remains on-screen and repositions/evades without jumping off-screen or to an invalid location.",
+        "Evasive behavior works on desktop (mouse proximity) and has a sensible equivalent on touch devices (does not rely exclusively on window mousemove)."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Update the teasing message popups so that each click on “No” spawns a random teasing message at a random position on the screen, and the message visibly “hovers/moves around” after appearing. Each “No” click must create a new popup (random message and random starting position) while keeping the “No” button present.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent-3",
+          "msg-recent-5"
+        ],
+        "quotes": [
+          "Like once they said no, once they click on no, you should get a random message, a teething message. And again, the no should be appearing immediately.",
+          "the random message has to pop up every time, means the random message has to hover all around the screen.",
+          "should each new message appear in a random floating position on the screen? Yes. Or should they animate move around after appearing? Yeah, they can move around after appearing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each “No” click shows a teasing popup message at a random screen location (not anchored to the button).",
+        "The popup animates/moves after appearing (hovering/drifting effect) and then disappears after a short time.",
+        "Multiple “No” clicks in succession create multiple popups without breaking layout or blocking button interaction."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Improve the proposal/home screen background to be more classy and aesthetic while staying Valentine-themed; update styling so the background feels intentional and premium (e.g., refined gradients, subtle texture/pattern, and consistent contrast with the card/content).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-recent-5"
+        ],
+        "quotes": [
+          "And on the background, it should be like, it should be better. It has to be classy. It has to be aesthetic."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The background looks visually upgraded (more refined than a basic gradient) and does not reduce readability of the main prompt and buttons.",
+        "The updated background works in common mobile viewport sizes without banding/contrast issues."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/immutablePaths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Keep all backend logic (if any) within the single Motoko actor in backend/main.mo; do not introduce additional backend services.",
+    "Use English for any user-facing text."
+  ],
+  "nonGoals": [
+    "Do not add third-party authentication providers (only Internet Identity is supported).",
+    "Do not add external databases or non-Motoko backend services.",
+    "Do not change the existing Yes/success flow semantics (it should still show the Yayyyy success screen with fireworks)."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Cartoon kitty illustration based on the uploaded reference, with a love/heart symbol, clean background (proposal-kitty-cartoon.dim_768x768.png)"
+    ],
+    "edits": []
+  }
+}
